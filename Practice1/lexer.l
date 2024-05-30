@@ -5,7 +5,7 @@
 #include "keyword.h"
 
 void yyerror(char *);
-int yylineno;
+int yylineno = 1;
 char *yytext;
 FILE *token_list;
 FILE *identifier_table;
@@ -76,10 +76,8 @@ void add_token(int table_id, int value_id){
         case 3:
             strcpy(table, "REAL");
     }
-    fprintf(token_list, table);
-    fprintf(token_list, "\t");
-    fprintf(token_list, id);
-    fprintf(token_list, "\n");
+    fprintf(token_list, "%-12s", table);
+    fprintf(token_list, "%-10s", id);
 }
 
 
@@ -115,7 +113,7 @@ REAL            { printf("real ");add_token(0, REAL); }
 "-"             { printf("- ");add_token(0, MINUS);}
 "("             { printf("( ");add_token(0, LPAREN);}
 ")"             { printf(") ");add_token(0, RPAREN);}
-"\n"            { printf("\n");yylineno++; }
+"\n"            { printf("\n");fprintf(token_list, "\n");yylineno++; }
 [ \t]           ;
 
 %%
