@@ -423,9 +423,9 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "Practice1/lexer.l"
+#line 1 "lexer.l"
 #define INITIAL 0
-#line 2 "Practice1/lexer.l"
+#line 2 "lexer.l"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -661,7 +661,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 96 "Practice1/lexer.l"
+#line 96 "lexer.l"
 
 
 #line 668 "lex.yy.c"
@@ -749,117 +749,117 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 98 "Practice1/lexer.l"
+#line 98 "lexer.l"
 { printf("program ");add_token(0, PROGRAM); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 99 "Practice1/lexer.l"
+#line 99 "lexer.l"
 { printf("end ");add_token(0, END); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 100 "Practice1/lexer.l"
+#line 100 "lexer.l"
 { printf("do ");add_token(0, DO); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 101 "Practice1/lexer.l"
+#line 101 "lexer.l"
 { printf("if ");add_token(0, IF); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 102 "Practice1/lexer.l"
+#line 102 "lexer.l"
 { printf("then ");add_token(0, THEN); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 103 "Practice1/lexer.l"
+#line 103 "lexer.l"
 { printf("print ");add_token(0, PRINT); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 104 "Practice1/lexer.l"
+#line 104 "lexer.l"
 { printf("int ");add_token(0, INTEGER); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 105 "Practice1/lexer.l"
+#line 105 "lexer.l"
 { printf("real ");add_token(0, REAL); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 106 "Practice1/lexer.l"
+#line 106 "lexer.l"
 { printf("id ");add_token(1, add_identifier_entry(yytext)); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 107 "Practice1/lexer.l"
+#line 107 "lexer.l"
 { printf("int_num ");add_token(2, add_integer_entry(atoi(yytext))); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 108 "Practice1/lexer.l"
+#line 108 "lexer.l"
 { printf("real_num, %f", atof(yytext));add_token(3, add_real_entry(atof(yytext))); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 109 "Practice1/lexer.l"
+#line 109 "lexer.l"
 { printf(":: ");add_token(0, SCOPE); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 110 "Practice1/lexer.l"
+#line 110 "lexer.l"
 { printf(", ");add_token(0, COMMA);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 111 "Practice1/lexer.l"
+#line 111 "lexer.l"
 { printf("= ");add_token(0, ASSIGN);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 112 "Practice1/lexer.l"
+#line 112 "lexer.l"
 { printf("* ");add_token(0, MULTIPLY);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 113 "Practice1/lexer.l"
+#line 113 "lexer.l"
 { printf("/ ");add_token(0, DIVIDE);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 114 "Practice1/lexer.l"
+#line 114 "lexer.l"
 { printf("+ ");add_token(0, PLUS);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 115 "Practice1/lexer.l"
+#line 115 "lexer.l"
 { printf("- ");add_token(0, MINUS);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 116 "Practice1/lexer.l"
+#line 116 "lexer.l"
 { printf("( ");add_token(0, LPAREN);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 117 "Practice1/lexer.l"
+#line 117 "lexer.l"
 { printf(") ");add_token(0, RPAREN);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 118 "Practice1/lexer.l"
+#line 118 "lexer.l"
 { printf("\n");yylineno++; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 119 "Practice1/lexer.l"
+#line 119 "lexer.l"
 ;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 121 "Practice1/lexer.l"
+#line 121 "lexer.l"
 ECHO;
 	YY_BREAK
 #line 866 "lex.yy.c"
@@ -1748,7 +1748,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 121 "Practice1/lexer.l"
+#line 121 "lexer.l"
 
 
 void yyerror(char *str) {

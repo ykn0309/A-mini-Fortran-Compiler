@@ -25,7 +25,7 @@ DO              { printf("do\n");return DO; }
 IF             { printf("if\n");return IF; }
 THEN           { printf("then\n");return THEN; }
 PRINT          { printf("print\n");return PRINT; }
-INTEGER         { printf("int\n");yylval.str = strdup(yytext); return INTEGER; }
+INTEGER         { printf("int\n");return INTEGER; }
 REAL            { printf("real\n");yylval.str = strdup(yytext); return REAL; }
 {identifier}      { printf("id\n");yylval.str = strdup(yytext); return IDENTIFIER; }
 {integer_constant}    { printf("int_num\n");yylval.int_val = atoi(yytext); return INTEGER_CONSTANT; }
