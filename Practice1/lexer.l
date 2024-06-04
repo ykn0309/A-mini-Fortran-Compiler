@@ -113,6 +113,7 @@ REAL            { printf("real ");add_token(0, REAL); }
 "-"             { printf("- ");add_token(0, MINUS);}
 "("             { printf("( ");add_token(0, LPAREN);}
 ")"             { printf(") ");add_token(0, RPAREN);}
+"$"             { printf("$ ");add_token(0, DOLLAR);}
 "\n"            { printf("\n");fprintf(token_list, "\n");yylineno++; }
 [ \t]           ;
 

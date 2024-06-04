@@ -15,4 +15,5 @@
 #define SCOPE       14
 #define ASSIGN      15
 #define COMMA       16
+#define DOLLAR      17
 // #define DOT         17
