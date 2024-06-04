@@ -1,0 +1,13 @@
+PROGRAM example
+INTEGER :: i, start, end
+REAL :: x, y
+start = 0
+end = 20
+x = 3.14
+DO i = start, end
+IF(i-10) THEN
+PRINT *, y
+END IF
+y = x * i
+ END DO
+END PROGRAM example$
