@@ -32,14 +32,31 @@ void emit(char *op, char *arg1, char *arg2, char *result) {
 
 /* 打印四元式 */
 void printQuads() {
-    for (int i = 0; i < quadIndex; i++) {
-        printf("(%d)(%s, %s, %s, %s)\n",
-               i,
-               quads[i].op,
-               quads[i].arg1 ? quads[i].arg1 : "_",
-               quads[i].arg2 ? quads[i].arg2 : "_",
-               quads[i].result ? quads[i].result : "_");
+    // 写入文件output.txt中
+    FILE *fout = fopen("output.txt", "w");
+    if (fout == NULL) {
+        perror("Cannot open output.txt");
+        exit(EXIT_FAILURE);
     }
+
+    for (int i = 0; i < quadIndex; i++) {
+        fprintf(fout, "(%d)(%s, %s, %s, %s)\n",
+                i,
+                quads[i].op,
+                quads[i].arg1 ? quads[i].arg1 : "_",
+                quads[i].arg2 ? quads[i].arg2 : "_",
+                quads[i].result ? quads[i].result : "_");
+    }
+
+    fclose(fout);
+    // for (int i = 0; i < quadIndex; i++) {
+    //     printf("(%d)(%s, %s, %s, %s)\n",
+    //            i,
+    //            quads[i].op,
+    //            quads[i].arg1 ? quads[i].arg1 : "_",
+    //            quads[i].arg2 ? quads[i].arg2 : "_",
+    //            quads[i].result ? quads[i].result : "_");
+    // }
 }
 %}
 

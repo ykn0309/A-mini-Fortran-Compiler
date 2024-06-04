@@ -103,19 +103,36 @@ void emit(char *op, char *arg1, char *arg2, char *result) {
 
 /* 打印四元式 */
 void printQuads() {
-    for (int i = 0; i < quadIndex; i++) {
-        printf("(%d)(%s, %s, %s, %s)\n",
-               i,
-               quads[i].op,
-               quads[i].arg1 ? quads[i].arg1 : "_",
-               quads[i].arg2 ? quads[i].arg2 : "_",
-               quads[i].result ? quads[i].result : "_");
+    // 写入文件output.txt中
+    FILE *fout = fopen("output.txt", "w");
+    if (fout == NULL) {
+        perror("Cannot open output.txt");
+        exit(EXIT_FAILURE);
     }
+
+    for (int i = 0; i < quadIndex; i++) {
+        fprintf(fout, "(%d)(%s, %s, %s, %s)\n",
+                i,
+                quads[i].op,
+                quads[i].arg1 ? quads[i].arg1 : "_",
+                quads[i].arg2 ? quads[i].arg2 : "_",
+                quads[i].result ? quads[i].result : "_");
+    }
+
+    fclose(fout);
+    // for (int i = 0; i < quadIndex; i++) {
+    //     printf("(%d)(%s, %s, %s, %s)\n",
+    //            i,
+    //            quads[i].op,
+    //            quads[i].arg1 ? quads[i].arg1 : "_",
+    //            quads[i].arg2 ? quads[i].arg2 : "_",
+    //            quads[i].result ? quads[i].result : "_");
+    // }
 }
 
 
 /* Line 189 of yacc.c  */
-#line 119 "parser.tab.c"
+#line 136 "parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -172,7 +189,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 46 "parser.y"
+#line 63 "parser.y"
 
     char *str;
     int int_val;
@@ -181,7 +198,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 185 "parser.tab.c"
+#line 202 "parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -193,7 +210,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 197 "parser.tab.c"
+#line 214 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -487,12 +504,12 @@ static const yytype_int8 yyrhs[] =
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_uint16 yyrline[] =
 {
-       0,    62,    62,    68,    72,    73,    77,    90,    91,    95,
-      96,   105,   106,   110,   111,   112,   113,   117,   124,   124,
-     145,   145,   184,   191,   192,   199,   209,   210,   217,   227,
-     228,   229,   233,   237,   242
+       0,    79,    79,    85,    89,    90,    94,   107,   108,   112,
+     113,   122,   123,   127,   128,   129,   130,   134,   141,   141,
+     162,   162,   201,   208,   209,   216,   226,   227,   234,   244,
+     245,   246,   250,   254,   259
 };
 #endif
 
@@ -1434,7 +1451,7 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 62 "parser.y"
+#line 79 "parser.y"
     {
         printQuads(); // 打印四元式
     ;}
@@ -1443,21 +1460,21 @@ yyreduce:
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 72 "parser.y"
+#line 89 "parser.y"
     { (yyval.str) = NULL; ;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 73 "parser.y"
+#line 90 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (2)].str); ;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 77 "parser.y"
+#line 94 "parser.y"
     {
         // 获取变量列表中的每个变量，并生成对应的声明四元式
         /*char *variables = $3;
@@ -1473,28 +1490,28 @@ yyreduce:
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 90 "parser.y"
+#line 107 "parser.y"
     { (yyval.str) = "int"; ;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 91 "parser.y"
+#line 108 "parser.y"
     { (yyval.str) = "real"; ;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 95 "parser.y"
+#line 112 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (1)].str); ;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 96 "parser.y"
+#line 113 "parser.y"
     {
         // 将变量名连接成字符串
         char *temp = (char*)malloc(strlen((yyvsp[(1) - (3)].str)) + strlen((yyvsp[(3) - (3)].str)) + 2);
@@ -1506,21 +1523,21 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 105 "parser.y"
+#line 122 "parser.y"
     { (yyval.str) = NULL; ;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 106 "parser.y"
+#line 123 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (2)].str); ;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 117 "parser.y"
+#line 134 "parser.y"
     {
         // 生成赋值的四元式
         emit(":=", (yyvsp[(3) - (3)].str), NULL, (yyvsp[(1) - (3)].str));
@@ -1530,7 +1547,7 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 124 "parser.y"
+#line 141 "parser.y"
     {
         // 生成条件跳转的四元式，跳转目标为 statement_list 之后的四元式编号
         int jump_false_quad = quadIndex;
@@ -1551,7 +1568,7 @@ yyreduce:
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 138 "parser.y"
+#line 155 "parser.y"
     {// 回填条件不满足的跳转目标
         char end_label[10];
         snprintf(end_label, 10, "%d", quadIndex); // 回填到下一条指令
@@ -1561,7 +1578,7 @@ yyreduce:
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 145 "parser.y"
+#line 162 "parser.y"
     {
         // 初始化循环变量
         emit(":=", (yyvsp[(4) - (4)].str), NULL, (yyvsp[(2) - (4)].str));
@@ -1571,7 +1588,7 @@ yyreduce:
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 148 "parser.y"
+#line 165 "parser.y"
     {
         char *start_label = (char *)malloc(10);
         snprintf(start_label, 10, "%d", loop_start);
@@ -1610,7 +1627,7 @@ yyreduce:
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 184 "parser.y"
+#line 201 "parser.y"
     {
         // 生成打印的四元式
         emit("PRINT", (yyvsp[(4) - (4)].str), NULL, NULL);
@@ -1620,14 +1637,14 @@ yyreduce:
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 191 "parser.y"
+#line 208 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (1)].str); ;}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 192 "parser.y"
+#line 209 "parser.y"
     {
         // 生成加法的四元式
         char *temp = (char*)malloc(10);
@@ -1640,7 +1657,7 @@ yyreduce:
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 199 "parser.y"
+#line 216 "parser.y"
     {
         // 生成减法的四元式
         char *temp = (char*)malloc(10);
@@ -1653,14 +1670,14 @@ yyreduce:
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 209 "parser.y"
+#line 226 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (1)].str); ;}
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 210 "parser.y"
+#line 227 "parser.y"
     {
         // 生成乘法的四元式
         char *temp = (char*)malloc(10);
@@ -1673,7 +1690,7 @@ yyreduce:
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 217 "parser.y"
+#line 234 "parser.y"
     {
         // 生成除法的四元式
         char *temp = (char*)malloc(10);
@@ -1686,35 +1703,35 @@ yyreduce:
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 227 "parser.y"
+#line 244 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (1)].str); ;}
     break;
 
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 228 "parser.y"
+#line 245 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (1)].str); ;}
     break;
 
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 229 "parser.y"
+#line 246 "parser.y"
     { (yyval.str) = (yyvsp[(2) - (3)].str); ;}
     break;
 
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 233 "parser.y"
+#line 250 "parser.y"
     { (yyval.str) = (yyvsp[(1) - (1)].str); ;}
     break;
 
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 237 "parser.y"
+#line 254 "parser.y"
     {
         char *temp = (char*)malloc(10);
         sprintf(temp, "%d", (yyvsp[(1) - (1)].int_val));
@@ -1725,7 +1742,7 @@ yyreduce:
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 242 "parser.y"
+#line 259 "parser.y"
     {
         char *temp = (char*)malloc(10);
         sprintf(temp, "%f", (yyvsp[(1) - (1)].real_val));
@@ -1736,7 +1753,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 1740 "parser.tab.c"
+#line 1757 "parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1948,7 +1965,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 248 "parser.y"
+#line 265 "parser.y"
 
 
 int main() {
