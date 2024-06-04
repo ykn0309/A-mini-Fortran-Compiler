@@ -66,7 +66,7 @@ void printQuads() {
     double real_val;
 }
 
-%token <str> PROGRAM END DO IF THEN PRINT INTEGER REAL IDENTIFIER
+%token <str> PROGRAM END DO IF THEN PRINT INTEGER REAL IDENTIFIER DOLLAR
 %token <int_val> INTEGER_CONSTANT
 %token <real_val> REAL_CONSTANT
 %token ASSIGN MULTIPLY DIVIDE PLUS MINUS LPAREN RPAREN COMMA SCOPE
@@ -76,7 +76,7 @@ void printQuads() {
 %%
 
 program:
-    PROGRAM IDENTIFIER body END PROGRAM IDENTIFIER {
+    PROGRAM IDENTIFIER body END PROGRAM IDENTIFIER DOLLAR {
         printQuads(); // 打印四元式
     }
     ;

@@ -40,6 +40,7 @@ REAL            { yylval.str = strdup(yytext); return REAL; }
 "("             { return LPAREN; }
 ")"             { return RPAREN; }
 "\n"            { yylineno++; }
+"$"             { return DOLLAR; }
 [ \t]           ; // 忽略空格和制表符
 
 %%

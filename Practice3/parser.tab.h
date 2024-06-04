@@ -48,17 +48,18 @@
      INTEGER = 264,
      REAL = 265,
      IDENTIFIER = 266,
-     INTEGER_CONSTANT = 267,
-     REAL_CONSTANT = 268,
-     ASSIGN = 269,
-     MULTIPLY = 270,
-     DIVIDE = 271,
-     PLUS = 272,
-     MINUS = 273,
-     LPAREN = 274,
-     RPAREN = 275,
-     COMMA = 276,
-     SCOPE = 277
+     DOLLAR = 267,
+     INTEGER_CONSTANT = 268,
+     REAL_CONSTANT = 269,
+     ASSIGN = 270,
+     MULTIPLY = 271,
+     DIVIDE = 272,
+     PLUS = 273,
+     MINUS = 274,
+     LPAREN = 275,
+     RPAREN = 276,
+     COMMA = 277,
+     SCOPE = 278
    };
 #endif
 
@@ -78,7 +79,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 82 "parser.tab.h"
+#line 83 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
