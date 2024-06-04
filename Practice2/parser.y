@@ -3,10 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 extern int yylineno;
+extern int yycolno;
 int yylex(void);
 void yyerror(const char *msg);
-int if_error = 0;
+void skip_error();
+int yyerrstatus;
 %}
+%error-verbose
+
 
 %union {
     char *str;
@@ -14,12 +18,12 @@ int if_error = 0;
     double real_val;
 }
 
-%token PROGRAM END DO IF THEN PRINT INTEGER REAL IDENTIFIER INTEGER_CONSTANT REAL_CONSTANT TYPE_SPECIFIER ASSIGN MULTIPLY DIVIDE PLUS MINUS LPAREN RPAREN DOT COMMA SCOPE EOL
+%token PROGRAM END DO IF THEN PRINT INTEGER REAL IDENTIFIER INTEGER_CONSTANT REAL_CONSTANT TYPE_SPECIFIER ASSIGN MULTIPLY DIVIDE PLUS MINUS LPAREN RPAREN DOT COMMA SCOPE EOL DOLLAR
 %type <str> type_specifier variable_list variable declaration_list statement_list expression term factor constant
 
 %%
 
-program: PROGRAM IDENTIFIER body END PROGRAM IDENTIFIER
+program: PROGRAM IDENTIFIER body END PROGRAM IDENTIFIER DOLLAR  {printf("Pass!\n");}//{printf("\033[47;42mPass!\033[0m\n");}
         ;
 
 body: declaration_list statement_list
@@ -91,11 +95,19 @@ constant: INTEGER_CONSTANT
 
 int main() {
     yyparse();
-    if(!if_error) printf("\033[47;42mPass!\033[0m\n");
+    // if(!if_error) printf("\033[47;42mPass!\033[0m\n");
     return 0;
 }
 
+// void skip_error() {
+//     while (yylex() != EOL) {
+//         // 跳过错误，直到遇到换行符
+//     }
+//     yyerrok;
+// }
+
 void yyerror(const char *msg) {
-    fprintf(stderr, "\033[47;31mError at line %d: %s\033[0m\n", yylineno, msg);
-    if_error =1;
+    // fprintf(stderr, "\033[47;31mError at line %d, col %d: %s\033[0m\n\n", yylineno, yycolno, msg);
+    // fprintf(stderr, "Error at line %d, col %d: %s\n\n", yylineno, yycolno, msg);
+    fprintf(stdout, "Error at line %d, col %d: %s\n\n", yylineno, yycolno, msg);
 }

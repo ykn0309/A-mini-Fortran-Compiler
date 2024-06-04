@@ -61,7 +61,8 @@
      DOT = 277,
      COMMA = 278,
      SCOPE = 279,
-     EOL = 280
+     EOL = 280,
+     DOLLAR = 281
    };
 #endif
 
@@ -72,7 +73,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 11 "parser.y"
+#line 15 "parser.y"
 
     char *str;
     int int_val;
@@ -81,7 +82,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 85 "parser.tab.h"
+#line 86 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

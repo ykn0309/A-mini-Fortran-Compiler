@@ -11,7 +11,3 @@ END IF
 y = x * i
  END DO
 END PROGRAM example$
-
-
-
-

@@ -3,6 +3,7 @@
 #include "parser.tab.h"
 
 int yylineno = 1;
+int yycolno = 1;
 %}
 
 %option noyywrap
@@ -10,6 +11,7 @@ int yylineno = 1;
 %%
 
 KEYWORD[[:space:]]+[0-9]+   { 
+                                yycolno += yyleng;
                                 int num;
                                 if (sscanf(yytext, "%*s %d", &num) == 1) {
                                     switch(num) {
@@ -29,20 +31,21 @@ KEYWORD[[:space:]]+[0-9]+   {
                                         case 13:    return RPAREN ;     break;
                                         case 14:    return SCOPE ;      break;
                                         case 15:    return ASSIGN ;     break;
-                                        case 16:    return COMMA ;
+                                        case 16:    return COMMA ;      break;
+                                        case 17:    return DOLLAR;
                                     }
                                 }
                             }
 
-IDENTIFIER  {return IDENTIFIER;}
+IDENTIFIER  {yycolno+=yyleng; return IDENTIFIER;}
 
-INTEGER     {return INTEGER_CONSTANT;}
+INTEGER     {yycolno+=yyleng; return INTEGER_CONSTANT;}
 
-REAL        {return REAL_CONSTANT;}
+REAL        {yycolno+=yyleng; return REAL_CONSTANT;}
 
-"\n"        {yylineno++; }
+"\n"        {yycolno = 1; yylineno++;}
 
-.           ;
+.           {yycolno ++;}
 
 %%
 
