@@ -160,11 +160,11 @@ class TextEditorWindow:
         if self.file_path:
             try:
                 # 执行命令并捕获输出
-                result = subprocess.run(["fortran_compiler.exe"], input=open(self.file_path).read(), text=True, capture_output=True, check=True)
-                if result == "":
-                    messagebox.showerror("错误", result.stderr)
+                result = subprocess.run(["fortran_compiler.exe"], input=open("token_list.txt").read(), text=True, capture_output=True, check=True)
+                if result.stdout == "":
+                    messagebox.showinfo("提示", "语义分析成功!")
                 else:
-                    messagebox.showinfo("提示","语义分析成功")
+                    messagebox.showerror("提示",result.stdout)
             except Exception as e:
                 messagebox.showerror("错误", f"语义分析失败: {e}")
         else:

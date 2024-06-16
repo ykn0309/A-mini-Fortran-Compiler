@@ -2,3 +2,4 @@
 */lex.yy.c
 *.exe
 my_parser.exe
+*.txt
