@@ -22,7 +22,7 @@ class ViewContentWindow:
                 title = "整型常数表"
             elif file_name == "real_table.txt":
                 title = "实型常数表"
-            else:
+            elif file_name == "output.txt":
                 title = "中间代码"
             self.window = tk.Toplevel()
             self.window.title(title)
